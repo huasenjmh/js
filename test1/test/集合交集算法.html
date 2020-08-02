@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>集合交集算法</title>
+	</head>
+	<body>
+		<script>
+		function sym(args) {
+			var l=[];
+			var r=arguments[0];
+			for(var i=1;i<arguments.length;i++){
+				l=r;
+				r=arguments[i];
+				var arr=[];
+				var arr1=[];
+				//获得共同部分
+				
+				for(var j=0;j<l.length;j++){
+					for(var k=0;k<r.length;k++){
+						if(l[j]==r[k]){
+							arr.push(r[k]);
+							break;
+						}
+					}
+				}
+				document.write(arr+'<br>');
+				
+			    
+				//获得l部分
+				for(var j=0;j<l.length;j++){
+					if(arr.length==0){
+						arr1.push(l[j]);
+					}else{
+						for(var k=0;k<arr.length;k++){
+							if(l[j]==arr[k]){
+								break;
+							}else if(k==arr.length-1){
+								arr1.push(l[j]);
+							}
+						}
+					}
+					
+				}
+				document.write(arr1+'<br>');
+				//获得r部分
+				for(var j=0;j<r.length;j++){
+					if(arr.length==0){
+						arr1.push(r[j]);
+					}else{
+						for(var k=0;k<arr.length;k++){
+							if(r[j]==arr[k]){
+								break;
+							}else if(k==arr.length-1){
+								arr1.push(r[j]);
+							}
+						}
+					}
+					
+				}
+				document.write(arr1+'<br><br>');
+				//为r赋值
+				r=arr1;
+			}
+			var newArr=r;
+			r=[];
+			var flag=[];
+			for(var i=0;i<newArr.length;i++){
+				for(var j=0;j<newArr.length;j++){
+					if(newArr[i]==newArr[j]&&i!=j){
+						if(flag.length==0){
+							r.push(newArr[i]);
+							flag.push(newArr[i]);
+						}else{
+							for(var k=0;k<flag.length;k++){
+								if(newArr[i]==flag[k]){
+									break;
+								}else if(k==flag.length-1){
+									r.push(newArr[i]);
+									flag.push(newArr[i]);
+								}
+							}
+						} 
+						break;
+					}else if(j==newArr.length-1){
+						r.push(newArr[i]);
+					}
+				}
+			}
+		    return r;
+		}
+		
+		document.write(sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3], [5, 3, 9, 8], [1]));	
+		</script>
+	</body>
+</html>

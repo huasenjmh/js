@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <style>
+        #image{
+            display: block;
+            width: 500px;
+            height: 180px;
+            margin: 10px auto;
+        }
+        #next{
+            margin-left: 350px;
+        }
+    </style>
+    <body>
+        <img src="img/1.jpg" id="image" />
+        <button id="next">next</button>
+        <button id="prev">prev</button>
+         
+        <script>
+            var image = document.getElementById('image');
+            var next = document.getElementById("next");
+            var prev = document.getElementById('prev');
+            var nowIndex = 1;
+            var count = 6;
+             
+            next.onclick = function(){
+                 
+                //if(nowIndex+1>count){
+                //  nowIndex = 1;
+                //}else{
+                //  nowIndex++;
+                //}
+                 
+                nowIndex = nowIndex+1>count?1:nowIndex+1;
+                 
+                image.src = "img/"+nowIndex+".jpg";
+                 
+            }
+            prev.onclick = function(){
+                nowIndex = nowIndex<=1?count:nowIndex-1;
+//              if(nowIndex-1<=0){
+//                  nowIndex = count;
+//              }else{
+//                  nowIndex--;
+//              }
+                 
+                image.src = "img/"+nowIndex+".jpg";
+                 
+            }
+             
+             
+        </script>
+         
+    </body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>日期改写算法</title>
+	</head>
+	<body>
+		<script>
+		function makeFriendlyDates(arr) {
+			var months=['January','February','March','April'
+			,'May','June','July','August','September'
+			,'October','November','December'];
+			var day=['st','nd','rd','th'];
+			var start=arr[0].split("-");
+			var end=arr[1].split("-");
+			document.write(start+' '+end+'<br>');
+			
+			//确定当前年份
+			var y,m,d;
+			var date=new Date();
+			var dateYear=date.getFullYear();
+			document.write((dateYear)+'<br>');
+			
+			//判断年份
+			var pd=false;
+			if(start[0]==end[0]){
+				pd=true;
+			}else{
+				if(end[0]-start[0]==1){
+					if(start[1]>end[1]){
+						pd=true;
+					}else if(start[1]==end[1]){
+						if(start[2]>end[2]){
+							pd=true;
+						}
+					}
+				}
+			}
+			document.write(pd+'<br>');
+			
+			//判断所有情况
+			var startStr="";
+			var endStr="";
+			if(Number(start[0])==dateYear&&pa){
+				if(start[1]==end[1]){
+					startStr=startStr+months[Number(start[1])-1];
+					//endStr=endStr+months[Number(end[1])-1];
+					if(Number(start[2])==1||Number(start[2])==21){
+						startStr=startStr+' '+Number(start[2])+day[0];
+					}else if(Number(start[2])==2||Number(start[2])==22){
+						startStr=startStr+' '+Number(start[2])+day[1];
+					}else if(Number(start[2])==3||Number(start[2])==23){
+						startStr=startStr+' '+Number(start[2])+day[2];
+					}else{
+						startStr=startStr+' '+Number(start[2])+day[3];
+					}
+					//
+					if(Number(end[2])==1||Number(end[2])==21){
+						endStr=endStr+' '+Number(end[2])+day[0];
+					}else if(Number(end[2])==2||Number(end[2])==22){
+						endStr=endStr+' '+Number(end[2])+day[1];
+					}else if(Number(end[2])==3||Number(end[2])==23){
+						endStr=endStr+' '+Number(end[2])+day[2];
+					}else{
+						endStr=endStr+' '+Number(end[2])+day[3];
+					}
+					
+				}else{
+					startStr=startStr+months[Number(start[1])-1];
+					endStr=endStr+months[Number(end[1])-1];
+					if(Number(start[2])==1||Number(start[2])==21){
+						startStr=startStr+' '+Number(start[2])+day[0];
+					}else if(Number(start[2])==2||Number(start[2])==22){
+						startStr=startStr+' '+Number(start[2])+day[1];
+					}else if(Number(start[2])==3||Number(start[2])==23){
+						startStr=startStr+' '+Number(start[2])+day[2];
+					}else{
+						startStr=startStr+' '+Number(start[2])+day[3];
+					}
+					//
+					if(Number(end[2])==1||Number(end[2])==21){
+						endStr=endStr+' '+Number(end[2])+day[0];
+					}else if(Number(end[2])==2||Number(end[2])==22){
+						endStr=endStr+' '+Number(end[2])+day[1];
+					}else if(Number(end[2])==3||Number(end[2])==23){
+						endStr=endStr+' '+Number(end[2])+day[2];
+					}else{
+						endStr=endStr+' '+Number(end[2])+day[3];
+					}
+				}
+			}else{
+				if(pd){
+					if(start[1]==end[1]&&start[2]<end[2]){
+						startStr=startStr+months[Number(start[1])-1];
+						//endStr=endStr+months[Number(end[1])-1];
+						if(Number(start[2])==1||Number(start[2])==21){
+							startStr=startStr+' '+Number(start[2])+day[0];
+						}else if(Number(start[2])==2||Number(start[2])==22){
+							startStr=startStr+' '+Number(start[2])+day[1];
+						}else if(Number(start[2])==3||Number(start[2])==23){
+							startStr=startStr+' '+Number(start[2])+day[2];
+						}else{
+							startStr=startStr+' '+Number(start[2])+day[3];
+						}
+						//
+						if(Number(end[2])==1||Number(end[2])==21){
+							endStr=endStr+Number(end[2])+day[0];
+						}else if(Number(end[2])==2||Number(end[2])==22){
+							endStr=endStr+Number(end[2])+day[1];
+						}else if(Number(end[2])==3||Number(end[2])==23){
+							endStr=endStr+Number(end[2])+day[2];
+						}else{
+							endStr=endStr+Number(end[2])+day[3];
+						}
+						//
+						startStr=startStr+', '+start[0];
+						
+					}else{
+						startStr=startStr+months[Number(start[1])-1];
+						endStr=endStr+months[Number(end[1])-1];
+						if(Number(start[2])==1||Number(start[2])==21){
+							startStr=startStr+' '+Number(start[2])+day[0];
+						}else if(Number(start[2])==2||Number(start[2])==22){
+							startStr=startStr+' '+Number(start[2])+day[1];
+						}else if(Number(start[2])==3||Number(start[2])==23){
+							startStr=startStr+' '+Number(start[2])+day[2];
+						}else{
+							startStr=startStr+' '+Number(start[2])+day[3];
+						}
+						//
+						if(Number(end[2])==1||Number(end[2])==21){
+							endStr=endStr+' '+Number(end[2])+day[0];
+						}else if(Number(end[2])==2||Number(end[2])==22){
+							endStr=endStr+' '+Number(end[2])+day[1];
+						}else if(Number(end[2])==3||Number(end[2])==23){
+							endStr=endStr+' '+Number(end[2])+day[2];
+						}else{
+							endStr=endStr+' '+Number(end[2])+day[3];
+						}
+						//
+						startStr=startStr+', '+start[0];
+					}
+				}else{
+					startStr=startStr+months[Number(start[1])-1];
+					endStr=endStr+months[Number(end[1])-1];
+					if(Number(start[2])==1||Number(start[2])==21){
+						startStr=startStr+' '+Number(start[2])+day[0];
+					}else if(Number(start[2])==2||Number(start[2])==22){
+						startStr=startStr+' '+Number(start[2])+day[1];
+					}else if(Number(start[2])==3||Number(start[2])==23){
+						startStr=startStr+' '+Number(start[2])+day[2];
+					}else{
+						startStr=startStr+' '+Number(start[2])+day[3];
+					}
+					//
+					if(Number(end[2])==1||Number(end[2])==21){
+						endStr=endStr+' '+Number(end[2])+day[0];
+					}else if(Number(end[2])==2||Number(end[2])==22){
+						endStr=endStr+' '+Number(end[2])+day[1];
+					}else if(Number(end[2])==3||Number(end[2])==23){
+						endStr=endStr+' '+Number(end[2])+day[2];
+					}else{
+						endStr=endStr+' '+Number(end[2])+day[3];
+					}
+					//
+					startStr=startStr+', '+start[0];
+					endStr=endStr+', '+end[0];
+				}
+			}
+			
+			//优化日期
+			//document.write(months[Number('09')-1]+'<br>');
+			if(arr[0]==arr[1]){
+				arr=[];
+				arr.push(startStr);
+				//arr.push(endStr);
+			}else{
+				arr=[];
+				arr.push(startStr);
+				arr.push(endStr);
+			}
+			
+		    return arr;
+		}
+		
+		document.write(makeFriendlyDates(["2016-07-01", "2016-07-04"]));	
+		</script>
+	</body>
+</html>

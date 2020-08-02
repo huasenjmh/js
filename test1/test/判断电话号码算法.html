@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>判断电话号码算法</title>
+	</head>
+	<body>
+	    <script>
+		function telephoneCheck(str) {
+			var count=0;
+			var l=0,r=0;
+			
+		    for(var i=0;i<str.length;i++){
+				if(str[0]=='1'&&i==0){
+					//跳过国家号
+				}else{
+					if(str[i]>='0'&&str[i]<='9'){//统计位数
+						count++;   
+					}else if(str[i]==' '||str[i]=='-'){//跳过
+						
+					}else if(str[i]=='('){  //统计数目必须为零
+						if(count!=0){
+							return false;
+						}
+						l++;
+					}else if(str[i]==')'){
+						if(count!=3){
+							return false;
+						}
+						r++;
+					}else{
+						return false;
+					}
+				}
+			}
+			
+			if(count==10){
+				if(l==r){
+					if(l==0||l==1){
+						return true;
+					}else{
+						return false;
+					}
+				}else{
+					return false;
+				}
+			}else{
+				return false
+			}
+		}
+		
+		
+		
+		document.write(telephoneCheck("1 555-555-5555"));
+		</script>
+	</body>
+</html>

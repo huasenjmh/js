@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>收银系统算法</title>
+	</head>
+	<body>
+		<script>
+		function checkCashRegister(price, cash, cid) {
+		    var change=[];
+		    // Here is your change, ma'am.
+			var data={
+				0.01:'PENNY',
+				0.05:'NICKEL',
+				0.1:'DIME',
+				0.25:'QUARTER',
+				1:'ONE',
+				5:'FIVE',
+				10:'TEN',
+				20:'TWENTY',
+				100:'ONE HUNDRED'
+			}
+			var back=cash-price;
+			if(data.hasOwnProperty(back)){
+				for(var i=0;i<cid.length;i++){
+					if(data[back]==cid[i][0]){
+						if(cid[i][1]==back){
+							return "Closed";
+						}else if(cid[i][1]>0){
+							var arr=cid[i];
+							arr[1]=back;
+							change.push(arr);
+							return change;
+						}else{
+							return "Insufficient Funds";
+						}
+					}
+				}
+			}else{
+				var arr1=[100,20,10,5,1,0.25,0.1,0.05,0.01];
+				for(var i=0;i<arr1.length;i++){
+					if(back>arr1[i]){ //开始找钱
+						for(var j=cid.length-1;j>=0;j--){
+							if(data[arr1[i]]==cid[j][0]){
+								if(cid[j][1]==0){
+									i++;
+								}else{
+									var yushu;
+									if(back<1){
+										yushu=(back*100)%(arr1[i]*100); 
+										yushu=yushu/100;
+										yushu=Math.round(yushu * 100) / 100;
+									}else{
+										yushu=back%arr1[i];
+										yushu=Math.round(yushu * 100) / 100;
+									}
+									
+									document.write(yushu+'<br>');
+									var xu=back-yushu;
+									xu=Math.round(xu * 100) / 100;
+									if(xu>cid[j][1]){
+										back=back-cid[j][1];
+										back=Math.round(back * 100) / 100;
+										var arr=cid[j];
+										change.push(arr);
+										i++;
+										document.write('xu大于cid[j][1]'+'<br>');
+									}else if(xu==cid[j][1]){
+										if(yushu==0){
+											return "Closed";
+										}else{
+											back=back-cid[j][1];
+											back=Math.round(back * 100) / 100;
+											var arr=cid[j];
+											change.push(arr);
+											i++;
+										}
+										document.write('xu==cid[j][1]'+'<br>');
+									}else{
+										if(yushu==0){
+											back=back-xu;
+											back=Math.round(back * 100) / 100;
+											var arr=cid[j];
+											arr[1]=xu;
+											change.push(arr);
+											return change;
+										}else{
+											if(xu==0){
+												i++;
+											}else{
+												back=back-xu;
+												back=Math.round(back * 100) / 100;
+												var arr=cid[j];
+												arr[1]=xu;
+												change.push(arr);
+												i++;
+											}	
+										}
+										document.write('xu小于cid[j][1]'+yushu+'<br>');
+									}
+								}
+								document.write(change+back+'<br>');
+							}else{
+								//不执行
+								document.write("2、 没找到"+data[arr1[i]]+'<br>');
+							}
+						}
+					}else{
+						//不执行
+						document.write("1、 "+back+arr1[i]+'<br>');
+					}
+				}
+				if(back==0){
+					return change;
+				}else if(back>0){
+					document.write("0、 "+back+'<br>');
+					return "Insufficient Funds";
+				}else{
+					return "未知错误！";
+				}
+				
+			}
+		    //return ;
+		}
+		
+		// Example cash-in-drawer array:
+		// [["PENNY", 1.01],  一分
+		// ["NICKEL", 2.05], 五分
+		// ["DIME", 3.10],   一角
+		// ["QUARTER", 4.25],  0.25
+		// ["ONE", 90.00],    一元
+		// ["FIVE", 55.00],   五块
+		// ["TEN", 20.00],   十块
+		// ["TWENTY", 60.00],   20元
+		// ["ONE HUNDRED", 100.00]] 100元
+		document.write("hao"+'<br>');
+		document.write("仍然有很多bug，最大的bug是没有真正的判断出“Closed”这种情况。"+'<br>');
+		document.write(checkCashRegister(19.50, 20.00
+		, [["PENNY", 0.50], ["NICKEL", 0], ["DIME", 0]
+		, ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0]
+		, ["TWENTY", 0], ["ONE HUNDRED", 0]]));
+		
+		</script>
+	</body>
+</html>

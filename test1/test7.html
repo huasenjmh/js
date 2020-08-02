@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>表单简单验证</title>
+    </head>
+    <body>
+        <h2>用户登录</h2>
+        <form name="cform" method="post" action="123.php" onsubmit="return checkForm();">
+            用户账号： <input name="user"><br />
+            用户密码： <input name="pass" type="password"><br />
+            <input type="submit" value="验  证">
+        </form>
+        <script>
+            function checkForm() {
+                var user = cform.user.value;
+                var pass = cform.pass.value;
+                if (user.length < 2) {
+                    alert("用户名不少于2位");
+                    return false;
+                }
+                var str_temp = user.substr(0, 1);
+                if (!((str_temp >= "a" && str_temp <= "w") || (str_temp >= "A" && str_temp <= "W"))) {
+                    alert("用户名第一个字符需为字母!");
+                    return false;
+                }
+                if (pass.length < 6 || pass.length > 15) {
+                    alert("密码长度须在6-15之间!");
+                    return false;
+                }
+                return true;
+            }
+        </script>
+ 
+    </body>
+</html>

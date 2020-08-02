@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>库存更新算法</title>
+	</head>
+	<body>
+		<script>
+		function updateInventory(arr1, arr2) {
+		    // All inventory must be accounted for or you're fired!
+			//把arr1数组化成对象，会简化代码
+			var data={};
+			for(var i=0;i<arr1.length;i++){
+				data[arr1[i][1]]=arr1[i][0];
+				document.write(data[arr1[i][1]]+'<br>');
+			}
+			//遍历arr2,更新对象
+			for(var i=0;i<arr2.length;i++){
+				if(data.hasOwnProperty(arr2[i][1])){
+					data[arr2[i][1]]=data[arr2[i][1]]+arr2[i][0];
+				}else{
+					data[arr2[i][1]]=arr2[i][0];
+					document.write(data[arr2[i][1]]+'<br>');
+				}
+			}
+			//先清空arr1，再从对象得到更新的仓库
+			arr1=[];
+			for(var key  in data){
+				var arr=[];
+				arr[0]=data[key];
+				arr[1]=key;
+				arr1.push(arr);
+			}
+			for(var i=0;i<arr1.length-1;i++){
+				for(var j=i+1;j<arr1.length;j++){
+					if(arr1[i][1]<=arr1[j][1]){
+						//不执行
+					}else{//换位
+						var arr=arr1[i];
+						arr1[i]=arr1[j];
+						arr1[j]=arr;
+					}
+				}
+			}
+		    return arr1;
+		}
+		
+		// Example inventory lists
+		var curInv = [
+		[21, "Bowling Ball"],
+		[2, "Dirty Sock"],
+		[1, "Hair Pin"],
+		[5, "Microphone"]
+		];
+		
+		var newInv = [
+		[2, "Hair Pin"],
+		[3, "Half-Eaten Apple"],
+		[67, "Bowling Ball"],
+		[7, "Toothpaste"]
+		];
+		
+		document.write(updateInventory([], [[2, "Hair Pin"], [3, "Half-Eaten Apple"], [67, "Bowling Ball"], [7, "Toothpaste"]]));	
+		</script>
+	</body>
+</html>

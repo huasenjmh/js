@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>html符号转实体</title>
+	</head>
+	<body>
+		<script>
+		function convert(str) {
+		    // &colon;&rpar;
+			var a=["&","<",">",'"',"'"];
+			var ea=["&amp;","&lt;","&gt;",'&quot;',"&apos;"];
+			var arr=str.split("");
+			str="";
+			for(var i=0;i<arr.length;i++){
+				for(var j=0;j<a.length;j++){
+					if(arr[i]==a[j]){
+						arr[i]=ea[j];
+					}
+				}
+			}
+			for(var i=0;i<arr.length;i++){
+				str=str+arr[i];
+			}
+		    return str;
+		}
+		document.write(convert("Dolce & Gabbana"));
+		</script>
+	</body>
+</html>

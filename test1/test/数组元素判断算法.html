@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>数组元素判断算法</title>
+	</head>
+	<body>
+		<script>
+			function every(collection, pre) {
+			    // Is everyone being true?
+				for(var i=0;i<collection.length;i++){
+					if(collection[i].hasOwnProperty(pre)){
+						if(collection[i][pre]){
+							
+						}else{
+							return false;
+						}
+					}else{
+						return false;
+					}
+				}
+			    return true;
+			}
+			
+			document.write(every([{"user": "Tinky-Winky"
+			, "sex": "male"}, {"user": "Dipsy"
+			, "sex": "male"}, {"user": "Laa-Laa"
+			, "sex": "female"}, {"user": "Po", "sex": "female"}]
+			, "sex"));
+		</script>
+	</body>
+</html>

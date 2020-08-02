@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>字符串查询替换算法</title>
+	</head>
+	<body>
+		<script>
+		function myReplace(str, before, after) {
+			var arrStr=str.split(" ");
+			str="";
+			for(var i=0;i<arrStr.length;i++){
+				if(arrStr[i][0]>'A'&&arrStr[i][0]<'Z'){
+					if(arrStr[i].toLowerCase()==before.toLowerCase()){
+						var a;
+						var b;
+						a=after[0].toUpperCase();
+						b=after.slice(1);
+						arrStr[i]=a+b;
+					}
+				}else{
+					if(arrStr[i]==before.toLowerCase()){
+						arrStr[i]=after;
+					}
+				}
+				if(i==0){
+					str=str+arrStr[i];
+				}else{
+					str=str+" "+arrStr[i];
+				}
+				
+			}
+		    return str;
+		}
+		document.write(myReplace("A quick brown fox Jumped over the lazy dog"
+		,"jumped", "leaped"));		
+		</script>
+	</body>
+</html>

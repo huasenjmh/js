@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>排列组合去重算法</title>
+	</head>
+	<body>
+		<script>
+		<!--  这是w3cschool的编程题，事实上举的例子有误导性，使用公式会轻松一些。不过我并没有真正做出这个算法 -->
+		function permAlone(str) {
+			//var arr=str.split("");
+			document.write('字符串长度：'+str.length+'</br>');
+			//统计重复的字母，统计真正的长度,并计算倍数
+			var data={};
+			var realSize=0;
+			for(var i=0;i<str.length;i++){
+				if(data.hasOwnProperty(str[i])){
+					data[str[i]]++;
+				}else{
+					data[str[i]]=1;
+				}
+			}
+			//获得倍数
+			var times=[];
+			for(var key in data){
+				realSize++;
+				document.write('对象属性及值：'+key+' '+data[key]+'</br>');
+				if(data[key]>1){
+					var t=1;
+					for(var i=2;i<=data[key];i++){
+						t=t*i;
+					}
+					times.push(t);
+				}
+			}
+			document.write('倍数：'+times+'</br>');
+			//获得重复部分
+			var same=1;
+			var s=1;
+			for(var i=2;i<=str.length;i++){
+				s=s*i;
+				if(i<=realSize){
+					same=same*i;
+				}
+			}
+			if(times.length==1){
+				same=same*times[0];
+			}else if(times.length==2){
+				same=same*(realSize+1)*times[0]+same*(realSize+1)*times[1]-same*times[0]*times[1];
+			}
+			
+			document.write(s+' '+same+'</br>');
+			//计算不重复的个数count
+		    return s-same;
+		}
+		
+		document.write(permAlone('abfdefa')); 	
+		</script>
+	</body>
+</html>

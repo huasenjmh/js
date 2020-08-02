@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>质素求和算法</title>
+	</head>
+	<body>
+		<script>
+		function sumPrimes(num) {
+			var arr=[2]
+			for(var i=3;i<=num;i=i+2){
+				for(var j=2;j<i;j++){
+					if(i/j==Math.floor(i/j)){
+						break;
+					}else if(j+1==i){
+						arr.push(i);
+					}
+				}
+			}
+			var s=0;
+			for(var i=0;i<arr.length;i++){
+				s=s+arr[i];
+			}
+		    return arr;
+		}
+		
+		document.write(sumPrimes(100));	
+		</script>
+	
+	</body>
+</html>

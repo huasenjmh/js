@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>轨道周期算法</title>
+	</head>
+	<body>
+		<script>
+		function orbitalPeriod(arr) {
+		    var GM = 398600.4418;
+		    var earthRadius = 6367.4447;
+			var newArr=[];
+			for(var i=0;i<arr.length;i++){
+				var data={};
+				data['name']=arr[i].name;
+				var a;
+				var T;
+				a=arr[i].avgAlt+earthRadius;
+				T=2*Math.PI*Math.sqrt(a*a*a/GM);
+				data['orbitalPeriod']=Math.round(T);
+				document.write(data.name+' '+data.orbitalPeriod+'<br>');
+				newArr.push(data);
+			}
+		    return newArr;
+		}
+		
+		document.write(orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]));	
+		</script>
+	</body>
+</html>

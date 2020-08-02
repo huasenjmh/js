@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>最小公倍数算法</title>
+	</head>
+	<body>
+		<script>
+		function smallestCommons(arr) {
+			var i=1;
+			var j=1;
+			var result;
+			while(i<=arr[1]&&j<=arr[0]){
+				if(arr[0]*i==arr[1]*j){
+					result=arr[0]*i;
+					break;
+				}else if(arr[0]*i>arr[1]*j){
+					j++;
+				}else{
+					i++;
+				}
+			}
+		    return result;
+		}
+		
+		
+		document.write(smallestCommons([1,5]));	
+		</script>
+	</body>
+</html>

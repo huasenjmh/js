@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>函数迭代可选参数算法</title>
+	</head>
+	<body>
+		<script>
+		function add() {
+			var s=0;
+			if(arguments.length==1){
+				return add(arguments[0]);
+			}else{
+				for(var i=0;i<arguments.length;i++){
+					if(typeof arguments[i]=="number"){
+						s=s+arguments[i];
+					}else{
+						return undefined;
+					}
+				}
+			}
+		    return false;
+		}
+		
+		add(2,3);
+		</script>
+	</body>
+</html>

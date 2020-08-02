@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>对象搜索算法挑战</title>
+	</head>
+	<body>
+		<script>
+		function where(collection, source) {
+			var arr = [];
+			// What's in a name?
+			var arrSource=[];
+			for(var key in source){
+				arrSource.push(key);
+			}
+			for(var i=0;i<collection.length;i++){
+				for(var j=0;j<arrSource.length;j++){
+					if(collection[i].hasOwnProperty(arrSource[j])&&collection[i][arrSource[j]]==source[arrSource[j]]){
+						if(j==arrSource.length-1){
+							arr.push(collection[i]);
+						}
+					}else{
+						break;
+					}
+				}
+			}
+			return arr;
+		}
+			
+		document.write(where([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }));
+		</script>
+	</body>
+</html>

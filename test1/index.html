@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>点亮灯泡</title>     
+    </head>
+    <body>
+        <img id="myimage" src="img/IMG_2289.JPG" onclick="changeImage()" alt="my image gallery">
+        <p>点击灯泡就可以打开或关闭这盏灯</p> 
+        <script>
+            function changeImage() {
+                element = document.getElementById('myimage')
+ 
+                if (element.src.match("2322")) {
+                    element.src = "img/IMG_2289.JPG";
+                } else {
+                    element.src = "img/IMG_2322.JPG";
+                }
+            }
+        </script> 
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>数组验证算法</title>
+	</head>
+	<body>
+		<script>
+		function find(arr, func) {
+		    var num = 0;
+			for(var i=0;i<arr.length;i++){
+				num=arr[i];
+				if(func(num)){
+					break;
+				}else if(i==arr.length-1){
+					return undefined;
+				}
+			}
+		    return num;
+		}
+		
+		document.write(find([1, 2, 3, 4]
+		, function(num){ return num % 2 === 0; }));
+		</script>
+	</body>
+</html>

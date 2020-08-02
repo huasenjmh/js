@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"> 
+<title>点击按钮随机点名</title>
+ 
+<style type="text/css">
+   
+#bodybj{background:url(3.jpg) no-repeat center top;}
+#box{margin:auto;width:660px;font-size:66px;height:94px; color:#138eee;text-align:center; margin-top:200px;}
+#bt{margin:auto;width:200px;text-align:center;margin-top:75px;color:#fff;font-size:25px; cursor:pointer;}
+</style>
+ 
+<script type="text/javascript">
+var namelist=[
+"张三","李四","王五","贺六","孙九","赵十","刘一"];
+var mytime=null;
+ 
+function doit(){
+    var bt=window.document.getElementById("bt");
+    if(mytime==null){
+        bt.innerHTML="停止点名";
+        show();                    
+    }else{
+        bt.innerHTML="开始点名";
+        clearTimeout(mytime);
+        mytime=null;                    
+    }
+}
+ 
+function show(){
+    var box=window.document.getElementById("box");
+    //var num=Math.floor(Math.random()*100000)%namelist.length; 随机整数跟数组长度求余数，
+    //更容易理解的方式是：
+    var num=Math.floor(Math.random()*namelist.length);//结果一样的都是0到长度之间的随机整数
+    box.innerHTML=namelist[num];
+    mytime=setTimeout("show()",20);
+} 
+</script>
+</head>
+<body id="bodybj"> 
+<div id="box">亲，准备好点名了吗？</div>
+<div id="bt" onClick="doit()">开始点名</div> 
+</body>
+</html>

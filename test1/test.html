@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>转换罗马数字</title>
+	</head>
+	<body>
+		<script>
+			function conver(num){
+				if(num<=0){
+					return "没法转换";
+				}else{
+					var num1=[1000,500,100,50,10,5,1];
+					var roman=["M","D","C","L","X","V","I"];
+					//分解数字
+					var str=num.toString().split("");
+					//转换罗马数字
+					var result=""
+					for(var i=0;i<str.length;i++){
+						//获得数字
+						var num2=str[i]*Math.pow(10,str.length-1-i);
+						//转换
+						for(var j=0;j<num1.length;)
+						{
+							if(num2>num1[j]){
+								if((num1[j-1]-num2)==num1[j]||(num1[j-1]-num2)==num1[j+1]){
+									if(j==1||j==3||j==5)
+									    result=result+roman[j+1]+roman[j-1];
+									else 
+									    result=result+roman[j]+roman[j-1];
+									break;
+								}else{
+									result = result + roman[j];
+									num2=num2-num1[j];
+								}
+								
+							}else if(num2==num1[j]){
+								result = result + roman[j];
+								break;
+							}else{
+								j++;
+							}
+						}
+					}
+					return result;
+				}				
+			}
+			document.write(conver(36));
+		</script>
+	</body>
+</html>

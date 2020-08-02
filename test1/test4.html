@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            #date {
+                font-family: "微软雅黑";
+                font-size: 25px;
+                text-align: center;
+                color: #FFFAFA;
+                width: 500px;
+                height: 334px;
+                background: url(img/h.jpg);
+            }
+        </style>
+    </head>
+    <body>
+        <div id="date"></div>
+        <script language="JavaScript">
+            var urodz = new Date("12/16/2020");
+            var s = "今天离我的生日2020.12.16";
+            var now = new Date();
+            var ile = urodz.getTime() - now.getTime();
+            var dni = Math.floor(ile / (1000 * 60 * 60 * 24));
+            var datashow = document.getElementById("date");
+            if (dni > 1)
+                datashow.innerHTML = s + "<br>还有" + dni + "天";
+            else
+                datashow.innerHTML = s + "生日好像已经过去了";
+        </script>
+    </body>
+</html>

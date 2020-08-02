@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>字符串查询补充算法</title>
+	</head>
+	<body>
+		<script>
+		function fearNotLetter(str) {
+			var zi="abcdefghijklmnopqrstuvwxyz";
+			var count=0;
+			var flag=0;
+			var newStr="";
+			for(var j=0;j<zi.length;j++){
+				if(count==str.length)
+				    break;
+				if(str[count]==zi[j]){
+					if(count==0){
+						//newStr=newStr+str[0];
+						flag=1;
+						count++;
+					}else{
+						if(flag==1){
+							//newStr=newStr+str[count];
+							count++;
+						}else{
+							//newStr=newStr+str[count];
+							flag=1;
+							count++;
+						}
+					}
+				}else{
+					if(flag==1||flag==2){
+						newStr=newStr+zi[j];
+						flag=2;
+					}
+				}
+			}
+			if(newStr=="")
+			    return undefined;
+		    return newStr;
+		}
+		document.write(fearNotLetter("abcfh"));	
+		</script>
+	</body>
+</html>

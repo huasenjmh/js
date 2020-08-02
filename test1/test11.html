@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>jQuery简单验证</title>
+    </head>
+    <body>
+        <form id="logform">
+            <p>用户账号: <input type="text" id="userName" /><span id="msg"></span></p>
+            <p>用户密码: <input type="password" /></p>
+            <input type="button" value="提交" id="send" />
+        </form>
+        <script src="jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() { // 在DOM加载就绪时绑定一个匿名函数
+ 
+                $("#userName").focus().blur(function() {
+                    if ($(this).val() == "") { // 若用户名为空 
+                        $("#msg").html("用户名不能为空！").css("color", "red"); // 设置span的内容和文本颜色
+                        $(this).focus();
+                    }
+                })
+            });
+        </script>
+    </body>
+</html>

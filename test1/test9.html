@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>体彩</title>
+    </head>
+    <body><img src="img/3.jpg" />
+        <script>
+            var arr = [];
+            //var i=0;
+            function add() {
+                number = Math.floor(Math.random() * 11 + 1);
+                for (x in arr)
+				    //數據重複則放棄
+                    if (arr[x] == number)
+                        return;
+                //    arr[i]=number;
+                //    i++; 
+                arr.push(number)
+            }
+            do {
+                add();
+            } while (arr.length < 5)
+             
+            /*输出数组*/
+            for (x in arr)
+                if (arr[x] < 10)
+                    arr[x] = '0' + arr[x];
+            document.write("<h1 style='color: firebrick'>本期的幸运号码：", arr.join("  "), "</h1>");
+        </script>
+    </body>
+</html>

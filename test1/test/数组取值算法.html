@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>数组取值算法</title>
+	</head>
+	<body>
+		<script>
+		function drop(arr, func) {
+		    // Drop them elements.
+			var newArr=[];
+			for(var i=0;i<arr.length;i++){
+				if(func(arr[i])){
+					for(var j=i;j<arr.length;j++){
+						newArr.push(arr[j]);
+					}
+					break;
+				}
+			}
+		    return newArr;
+		}
+		
+		document.write(drop([1, 2, 3], function(n) {return n < 3; }));
+		</script>
+	</body>
+</html>

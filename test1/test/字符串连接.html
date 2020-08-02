@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>字符串连接</title>
+	</head>
+	<body>
+		<script>
+		function spinalCase(str) {
+			// "It's such a fine line between stupid, and clever."
+			// --David St. Hubbins
+			var newStr="";
+			for(var i=0;i<str.length;i++)
+			{
+				if((str[i]>='a'&&str[i]<='z')){
+					newStr=newStr+str[i];
+				}else{
+					if(i==0){
+						newStr=newStr+str[i].toLowerCase();
+					}else if((str[i]>='A'&&str[i]<='Z')){
+						if(newStr[newStr.length-1]=="-"){
+							newStr=newStr+str[i].toLowerCase();
+						}else{
+							newStr=newStr+"-"+str[i].toLowerCase();
+						}
+					}else{
+						newStr=newStr+"-";
+					}
+				}
+			}
+			return newStr;
+		}
+		
+		document.write(spinalCase('This Is Spinal Tap'));	
+		</script>
+	</body>
+</html>
